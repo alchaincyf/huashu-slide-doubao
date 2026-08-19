@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Environment / secrets (API keys)
+.env
+.env.local
+
+# Project output / generated images (skill itself doesn't generate these,
+# but if someone runs scripts in this dir they shouldn't be committed)
+**/output/
+**/配图/
+**/_备选/
+
+# Backups created by darwin-skill optimization loop
+SKILL.md.bak.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node / editor / OS
+node_modules/
+*.swp
+.idea/
+.vscode/
+Thumbs.db

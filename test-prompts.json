@@ -1,0 +1,37 @@
+[
+  {
+    "id": "happy_path_10_page_deck",
+    "prompt": "帮我做一套10页左右的PPT，介绍一个豆包专用的AI生图PPT技能（seedream 5.0），要求风格统一、信息密度高、最终给PPTX和HTML预览。",
+    "expected": "应先做设计理解和3个方向推荐，选定一个信息设计风格，生成Deck Bible，再产出项目内图片、PPTX和HTML，不引用image_gen（seedream_5.0_pro） 返回的临时 URL。"
+  },
+  {
+    "id": "ambiguous_style_request",
+    "prompt": "把这份技术分享材料做成好看的Keynote，内容比较多，我不确定用什么风格。",
+    "expected": "应走Full流程，顾问式重述需求，推荐3个差异化设计哲学方向，说明默认建议和风险，再进入样页或批量生成。"
+  },
+  {
+    "id": "fast_draft_lite",
+    "prompt": "直接快速做5页图片PPT草稿，风格用Field Notes，不用问我太多。",
+    "expected": "应走Lite流程，跳过三方向长讨论，快速写Deck Bible并生成5页草稿，同时仍遵守项目内复制和最终路径汇报。"
+  },
+  {
+    "id": "fallback_editable_text",
+    "prompt": "做一套8页PPT，但里面有很多精确表格和代码，文字必须可编辑。",
+    "expected": "应识别用户明确说'可编辑'是Path 3触发信号1，切到HTML到PPT fallback；或对精确表格做局部Path 3兜底，其他页仍走image_gen（seedream_5.0_pro）主路径，遵守html2pptx约束。"
+  },
+  {
+    "id": "single_cover_wechat",
+    "prompt": "帮我做个公众号头条封面，主题是Claude Opus 4.7发布解析。",
+    "expected": "应识别为Path 4单图任务；触发Step 0.0核心资产协议（Anthropic logo/品牌色/字体）；强制检查点列出平台2.35:1+尺寸1800×766+参考图清单+文字方案给用户确认；生成≤8字文字、纯视觉、不出现square/safe zone禁词；核心信息落在中央766×766安全区。"
+  },
+  {
+    "id": "personal_brand_pixel",
+    "prompt": "做个花叔风格的公众号头图，主题是又翻车了的AI工具。",
+    "expected": "应识别'花叔风格'触发个人品牌触发规则；自动加载assets/personal-brand/三张参考图作为image_gen（seedream_5.0_pro）参考输入；prompt用自然语言描述画面变化（沿用像素风颗粒度+配色+角色形象，画面换成翻车主题）；不去额外搜品牌色（三张参考图本身就是花叔的brand-spec.md）。"
+  },
+  {
+    "id": "brand_asset_required",
+    "prompt": "给Anthropic做一套6页发布会风格PPT。",
+    "expected": "应触发Step 0.0完整核心资产协议——WebSearch验证Anthropic最新状态，按资产识别度排序搜logo/产品截图/UI（Claude Console）/色值（赤陶橙）/字体；写入项目brand-spec.md；强制检查点过目spec摘要等用户确认；进入Step 0.1顾问式重述+3个发布会风格方向（Apple Keynote/Pentagram/Anthropic自身规范）；选定方向后写Deck Bible走Path 1生成6页。"
+  }
+]
